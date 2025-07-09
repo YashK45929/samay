@@ -364,3 +364,54 @@ footer {
 .summary-section {
   align-items: stretch;
 }
+
+.summary-card {
+  flex: 1 1 250px;
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.chart-card {
+  flex: 1 1 300px;
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 230px;
+  box-sizing: border-box;
+}
+
+body.dark {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --card: var(--card-dark);
+}
+.completed-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.task-card {
+  flex: 1 1 260px;
+  background: var(--card);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}

@@ -44,7 +44,6 @@ function startTask() {
 }
 
 
-
 function endTask(name) {
   const index = runningTasks.findIndex(t => t.name === name);
   if (index === -1) return alert("Task not found!");
