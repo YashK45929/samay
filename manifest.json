@@ -1,0 +1,21 @@
+{
+  "name": "समय - Task Timer",
+  "short_name": "समय",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#12121a",
+  "theme_color": "#12121a",
+  "description": "A minimal task timer app with dark mode and CSV export.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
