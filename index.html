@@ -9,6 +9,16 @@
   <link rel="apple-touch-icon" href="icon-512.png" />
   <meta name="theme-color" content="#12121a">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log("✅ Service Worker Registered"))
+          .catch(err => console.error("SW Registration Failed", err));
+      });
+    }
+  </script>
 </head>
 <body>
 
