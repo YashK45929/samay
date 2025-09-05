@@ -26,13 +26,18 @@ function startTask() {
   }
 
   const now = new Date();
-  runningTasks.push({
+  const task = {
     name,
     category,
     date: now.toISOString().split('T')[0],
     startDate: now,
     start: formatAMPM(now)
-  });
+  };
+  
+  runningTasks.push(task);
+
+  // Save to localStorage
+  saveRunningTasks();
 
   // Reset form
   document.getElementById('taskName').value = '';
@@ -43,6 +48,30 @@ function startTask() {
   renderRunningTasks();
 }
 
+// Add these helper functions anywhere in script.js
+
+function saveRunningTasks() {
+  // Convert Date objects to ISO strings for storage
+  const tasksToSave = runningTasks.map(task => ({
+    ...task,
+    startDate: task.startDate.toISOString()
+  }));
+  localStorage.setItem('runningTasks', JSON.stringify(tasksToSave));
+}
+
+function loadRunningTasks() {
+  try {
+    const storedTasks = JSON.parse(localStorage.getItem('runningTasks')) || [];
+    // Convert ISO strings back to Date objects
+    runningTasks = storedTasks.map(task => ({
+      ...task,
+      startDate: new Date(task.startDate)
+    }));
+  } catch (e) {
+    console.error("Error loading running tasks:", e);
+    runningTasks = [];
+  }
+}
 
 function endTask(name) {
   const index = runningTasks.findIndex(t => t.name === name);
@@ -57,6 +86,9 @@ function endTask(name) {
   task.startDate = task.startDate || new Date();
 
   runningTasks.splice(index, 1);
+  
+  // Update localStorage
+  saveRunningTasks();
 
   let tasks = [];
   try {
@@ -70,7 +102,6 @@ function endTask(name) {
 
   renderRunningTasks();
   displayTasks();
-
 }
 
 function renderRunningTasks() {
@@ -313,6 +344,8 @@ function toggleOtherCategoryInput() {
 }
 
 
+// Replace the current init code at the bottom of script.js
 // Init
+loadRunningTasks();  // Load running tasks from storage
 renderRunningTasks();
 displayTasks();
