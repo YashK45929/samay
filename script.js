@@ -1,5 +1,35 @@
 let runningTasks = [];
 
+// Helper functions to save/load running tasks
+function saveRunningTasks() {
+  try {
+    // Convert Date objects to ISO strings for storage
+    const tasksToSave = runningTasks.map(task => ({
+      ...task,
+      startDate: task.startDate.toISOString()
+    }));
+    localStorage.setItem('runningTasks', JSON.stringify(tasksToSave));
+    console.log('Running tasks saved:', runningTasks.length);
+  } catch (e) {
+    console.error("Error saving running tasks:", e);
+  }
+}
+
+function loadRunningTasks() {
+  try {
+    const storedTasks = JSON.parse(localStorage.getItem('runningTasks')) || [];
+    // Convert ISO strings back to Date objects
+    runningTasks = storedTasks.map(task => ({
+      ...task,
+      startDate: new Date(task.startDate)
+    }));
+    console.log('Running tasks loaded:', runningTasks.length);
+  } catch (e) {
+    console.error("Error loading running tasks:", e);
+    runningTasks = [];
+  }
+}
+
 function startTask() {
   const name = document.getElementById('taskName').value.trim();
   const categorySelect = document.getElementById('taskCategory');
@@ -46,31 +76,6 @@ function startTask() {
   customCategoryInput.style.display = 'none';
 
   renderRunningTasks();
-}
-
-// Add these helper functions anywhere in script.js
-
-function saveRunningTasks() {
-  // Convert Date objects to ISO strings for storage
-  const tasksToSave = runningTasks.map(task => ({
-    ...task,
-    startDate: task.startDate.toISOString()
-  }));
-  localStorage.setItem('runningTasks', JSON.stringify(tasksToSave));
-}
-
-function loadRunningTasks() {
-  try {
-    const storedTasks = JSON.parse(localStorage.getItem('runningTasks')) || [];
-    // Convert ISO strings back to Date objects
-    runningTasks = storedTasks.map(task => ({
-      ...task,
-      startDate: new Date(task.startDate)
-    }));
-  } catch (e) {
-    console.error("Error loading running tasks:", e);
-    runningTasks = [];
-  }
 }
 
 function endTask(name) {
@@ -324,7 +329,6 @@ function updateChart() {
   });
 }
 
-
 function parseDuration(str) {
   const [h, m, s] = str.split(":").map(Number);
   return h * 3600 + m * 60 + s;
@@ -343,8 +347,6 @@ function toggleOtherCategoryInput() {
   customInput.style.display = (selected === "Other") ? 'block' : 'none';
 }
 
-
-// Replace the current init code at the bottom of script.js
 // Init
 loadRunningTasks();  // Load running tasks from storage
 renderRunningTasks();

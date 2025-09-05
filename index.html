@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>समय</title>
+  <title>समय - Task Timer</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="icon-512.png" />
@@ -61,27 +61,26 @@
     <button onclick="startTask()">Start Task</button>
   </div>
 
-
   <!-- Tasks -->
   <h3>🟢 Running Tasks</h3>
   <div class="task-list" id="runningList"></div>
 
-<!-- Summary + Chart Side by Side -->
-<div class="summary-section">
-  <div class="summary-card">
-    <h3>⏳ Today</h3>
-    <ul id="todaySummary"></ul>
-  </div>
+  <!-- Summary + Chart Side by Side -->
+  <div class="summary-section">
+    <div class="summary-card">
+      <h3>⏳ Today</h3>
+      <ul id="todaySummary"></ul>
+    </div>
 
-  <div class="summary-card">
-    <h3>🗓 Past 7 Days  </h3>
-    <ul id="weekSummary"></ul>
-  </div>
+    <div class="summary-card">
+      <h3>🗓 Past 7 Days</h3>
+      <ul id="weekSummary"></ul>
+    </div>
 
-  <div class="chart-card">
-    <canvas id="weeklyChart"></canvas>
+    <div class="chart-card">
+      <canvas id="weeklyChart"></canvas>
+    </div>
   </div>
-</div>
 
   <h3>✅ Completed Tasks</h3>
   <div class="task-list" id="taskList"></div>

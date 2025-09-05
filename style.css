@@ -252,20 +252,6 @@ footer {
   opacity: 0.7;
 }
 
-
-.summary-box {
-  background: var(--card);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--text);
-}
-
 .task-input select {
   padding: 0.75rem;
   font-size: 1rem;
@@ -274,37 +260,6 @@ footer {
   background: var(--card);
   color: var(--text);
   transition: 0.3s;
-}
-
-.summary-box {
-  background: var(--card);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--text);
-}
-
-.summary-box ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0.5rem;
-  font-weight: normal;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.summary-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: flex-start;
 }
 
 .summary-section {
@@ -318,7 +273,8 @@ footer {
 
 .summary-card {
   flex: 1 1 250px;
-  background: white;
+  background: var(--card);
+  color: var(--text);
   border-radius: 12px;
   padding: 16px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -328,50 +284,6 @@ footer {
   margin-top: 0;
   font-size: 1.2rem;
   margin-bottom: 10px;
-}
-
-.chart-card {
-  flex: 1 1 300px;
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.chart-card {
-  flex: 1 1 300px;
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* make it fill height like others */
-  min-height: 230px; /* ensure consistency with text cards */
-  box-sizing: border-box;
-}
-
-.chart-card canvas {
-  max-width: 100%;
-  max-height: 220px;
-}
-
-.summary-section {
-  align-items: stretch;
-}
-
-.summary-card {
-  flex: 1 1 250px;
-  background: var(--card);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .chart-card {
@@ -389,11 +301,11 @@ footer {
   box-sizing: border-box;
 }
 
-body.dark {
-  --bg: var(--bg-dark);
-  --text: var(--text-dark);
-  --card: var(--card-dark);
+.chart-card canvas {
+  max-width: 100%;
+  max-height: 220px;
 }
+
 .completed-grid {
   display: flex;
   flex-wrap: wrap;
