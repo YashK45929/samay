@@ -188,37 +188,6 @@ function downloadCSV() {
   document.body.removeChild(link);
 }
 
-function toggleDarkMode() {
-  const isDark = document.body.classList.toggle('dark');
-  localStorage.setItem('dark', isDark);
-  updateModeLabel();
-}
-
-function updateModeLabel() {
-  const label = document.getElementById('modeLabel');
-  label.textContent = document.body.classList.contains('dark') 
-    ? '🌙 Dark Mode' : '🌞 Light Mode';
-}
-
-(function restoreDarkMode() {
-  const isDark = localStorage.getItem('dark') === 'true';
-  if (isDark) {
-    document.body.classList.add('dark');
-    document.getElementById('modeToggle').checked = true;
-  }
-  updateModeLabel();
-})();
-
-function filterByDate() {
-  const date = document.getElementById('filterDate').value;
-  displayTasks(date);
-}
-
-function clearFilter() {
-  document.getElementById('filterDate').value = '';
-  displayTasks();
-}
-
 function formatDateLabel(dateStr) {
   const today = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
@@ -350,4 +319,3 @@ function toggleOtherCategoryInput() {
 // Init
 loadRunningTasks();  // Load running tasks from storage
 renderRunningTasks();
-displayTasks();
